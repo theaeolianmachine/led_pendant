@@ -4,7 +4,7 @@
 #define DATA_PIN 0
 #define NUM_COLORS 8
 #define NUM_SHADES 4
-#define NUM_LEDS 16
+#define NUM_LEDS 24
 #define BASE_HUE 0
 #define BASE_VALUE 255
 
@@ -59,7 +59,7 @@ void colorFlow() {
             colorIndex += 2;
         }
         FastLED.show();
-        delay(50);
+        delay(40);
     }
 }
 
@@ -76,7 +76,7 @@ void lightFirstFourLEDS(uint16_t color, uint8_t offset) {
         }
     }
     FastLED.show();
-    delay(75);
+    delay(65);
 }
 
 void forwardAndBackwards() {
@@ -113,7 +113,7 @@ void twelveToSix() {
                 }
             }
             FastLED.show();
-            delay(75);
+            delay(65);
         }
     }
 }
