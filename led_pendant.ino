@@ -100,7 +100,7 @@ void twelveToSix() {
     uint16_t color;
     int8_t offset;
     for (color = 0; color < 256; color += 4) {
-        for (offset = 0; offset < (NUM_LEDS / 2); ++offset) {
+        for (offset = 0; offset < 8; ++offset) {
             for (dot = 0; dot < (NUM_LEDS / 2); ++dot) {
                 if (((dot + offset) & 7) < 4) {
                     leds[dot] = ColorFromPalette(
