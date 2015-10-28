@@ -49,6 +49,29 @@ void setup() {
     FastLED.setBrightness(BRIGHTNESS);
 }
 
+void pulse() {
+    uint16_t color;
+    uint16_t colorIndex;
+    uint8_t dot;
+    uint8_t numSteps;
+    for (color = 0; color < 256; color += 32) {
+        for (dot = 0; dot < NUM_LEDS; ++dot) {
+            colorIndex = ((dot & 1) == 0) ? color: color + 16;
+            leds[dot] = ColorFromPalette(
+                PENDANT_COLORS, colorIndex, BASE_VALUE, LINEARBLEND);
+        }
+        FastLED.show();
+        for (numSteps = 0; numSteps < 64; ++numSteps) {
+            for (dot = 0; dot < NUM_LEDS; ++dot) {
+                leds[dot].fadeLightBy(4);
+            }
+            FastLED.show();
+            delay(10);
+        }
+        delay(200);
+    }
+}
+
 void colorFlow() {
     uint16_t dot, index, colorIndex;
     for (index = 0; index < 256; ++index) {
@@ -122,4 +145,5 @@ void loop() {
     colorFlow();
     forwardAndBackwards();
     twelveToSix();
+    /* pulse(); */
 }
